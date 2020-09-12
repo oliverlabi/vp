@@ -6,8 +6,14 @@
   if($hournow < 7){
 	  $partofday = "uneaeg";
   } 
-  if($hournow >= 8 and $hournow < 18){
+  if($hournow >= 8 and $hournow < 17){
 	  $partofday = "akadeemilise aktiivsuse aeg";
+  }
+  if($hournow > 18 and $hournow < 20){
+	  $partofday = "trenni aeg";
+  }
+  if($hournow > 20 and $hournow < 23){
+	  $partofday = "puhkamise aeg";
   }
   
   //vaatame semestri kulgemist
@@ -42,6 +48,6 @@
   <p>Leht on loodud veebiprogrammeerimise kursuse raames <a href="http://www.tlu.ee">Tallinna Ülikooli</a> Digitehnoloogiate instituudis.</p>
   <p>Lehe avamise hetkel oli kuupäev ja kell: <?php echo $fulltimenow;?>.</p>
   <p><?php echo "Parajasti on " .$partofday ."."; ?> </p>
-  <p>1. nädala kodutöö - 17:34 02/09/20<p>
-  <p>2. nädala kodutöö - <?php echo $semesterpercentage;?> semestrist on läbitud.<p>
+  <p><?php echo $fromsemesterdurationdays;?> <?php echo $semesterdayssofar;?> on möödunud semestri algusest.<p>
+  <p><?php echo $semesterpercentage;?> semestrist on läbitud.<p>
 </body>
