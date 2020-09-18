@@ -1,33 +1,5 @@
 <?php
-  //var_dump($_POST);
-  require("../../../config.php");
-  $database = "if20_oliver_l_2";
-  if(isset($_POST["ideasubmit"]) and !empty($_POST["ideainput"])){
-	  //loome andmebaasiga ühenduse
-	  $conn = new mysqli($serverhost, $serverusername, $serverpassword, $database);
-	  //valmistan ette SQL käsu andmete kirjutamiseks - prepare sql keel databaasi päringute jaoks
-	  $stmt = $conn->prepare("INSERT INTO myideas (idea) VALUES(?)");
-	  echo $conn->error;
-	  //i - integer, d - decimal, s - string
-	  $stmt->bind_param("s", $_POST["ideainput"]);
-	  $stmt->execute();
-	  $stmt->close();
-	  $conn->close();
-  }
-  
-  //loen andmebaasist senised mõtted
-  $ideahtml = "";
-  $conn = new mysqli($serverhost, $serverusername, $serverpassword, $database);
-  $stmt = $conn->prepare("SELECT idea FROM myideas");
-  //seon tulemuse muutujaga
-  $stmt->bind_result($ideafromdb);
-  $stmt->execute();
-  while($stmt->fetch()){
-	  $ideahtml .= "<p>" .$ideafromdb ."</p>";
-  }
-  $stmt->close();
-  $conn->close();
-  
+
   $username = "Oliver Labi";
   $fulltimenow = date("d.m.Y H:i:s");
   $hournow = date("H");
@@ -74,6 +46,7 @@
   //var_dump($allfiles) - ei toimi sest valib kõik, kaasa arvatud peidetud kaustad;
   $picfiles = array_slice($allfiles, 2);
   $imghtml = "";
+  $imghtmlrand = "";
   //tsüklid
   $piccount = count($picfiles);
   //$i = $i + 1; ->
@@ -83,7 +56,8 @@
 	  //<img src="../img/pildifail" alt="tekst">
 	  $imghtml .= '<img src="../../vp_pics/' .$picfiles[$i] . '" alt="Tallinna Ülikool">';
   }
-  require("header.php");
+  $imghtmlrand .=  '<img src="../../vp_pics/'  .$picfiles[rand(0, $piccount - 1)] . '" alt="Tallinna Ülikool">';
+  require("header.php");  
 ?>
   
   <img src="../../img/vp_banner.png" alt="Veebiprogrammeerimise kursuse logo">
@@ -94,14 +68,7 @@
   <p><?php echo "Parajasti on " .$partofday ."."; ?> </p>
   <p><?php echo $fromsemesterdurationdays;?> <?php echo $semesterdayssofar;?> päeva on möödunud semestri algusest.<p>
   <p><?php echo $semesterpercentage;?> semestrist on läbitud.<p>
+  <p><a href="http://greeny.cs.tlu.ee/~oliver/vp/tund3/m%c3%b5tted.php">Üles kirjutatud mõtted.</a></p>
   <hr>
-  <?php echo $imghtml; ?>
-  <hr>
-  <form method="POST">
-	<label>Kirjutage oma esimene pähe tulev mõte!</label>
-	<input type="text" name="ideainput" placeholder="mõttekoht">
-	<input type="submit" name="ideasubmit" value="Saada mõte teele!">
-  </form>
-  </hr>
-  <?php echo $ideahtml; ?>
+  <?php echo $imghtmlrand; ?>
 </body>
