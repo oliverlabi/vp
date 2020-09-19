@@ -2,11 +2,14 @@
 
   $username = "Oliver Labi";
   $fulltimenow = date("d.m.Y H:i:s");
+  $partialtimenow = date("H:i:s");
+  $currentday = date("d. ");
   $hournow = date("H");
   $partofday = "lihtsalt aeg";
   $weekdaynameset = ["esmaspäev", "teisipäev", "kolmapäev", "neljapäev", "reede", "laupäev", "pühapäev"];
   $monthnameset = ["jaanuar", "veebruar", "märts", "aprill", "mai", "juuni", "juuli", "august", "september", "oktoober", "november", "detsember"];
   $weekdaynow = date("N");
+  $monthnow = date("m");
   if($hournow < 7){
 	  $partofday = "uneaeg";
   } 
@@ -64,7 +67,7 @@
   <h1><?php echo $username; ?></h1>
   <p>See veebileht on loodud õppetöö käigus ning ei sisalda mingit tõsiseltvõetavat sisu!</p>
   <p>Leht on loodud veebiprogrammeerimise kursuse raames <a href="http://www.tlu.ee">Tallinna Ülikooli</a> Digitehnoloogiate instituudis.</p>
-  <p>Lehe avamise hetkel oli: <?php echo $weekdaynameset[$weekdaynow - 1] .", " .$fulltimenow;?>.</p>
+  <p>Lehe avamise hetkel oli: <?php echo $weekdaynameset[$weekdaynow - 1] .", ".$currentday .$monthnameset[$monthnow - 1] .", kell " .$partialtimenow;?>.</p>
   <p><?php echo "Parajasti on " .$partofday ."."; ?> </p>
   <p><?php echo $fromsemesterdurationdays;?> <?php echo $semesterdayssofar;?> päeva on möödunud semestri algusest.<p>
   <p><?php echo $semesterpercentage;?> semestrist on läbitud.<p>
