@@ -51,17 +51,17 @@
   </ul>
   <form method="POST">
     <label for="firstnameinput">Eesnimi:</label>
-	<input type="text" name="firstnameinput" id="firstname" value="<?php echo isset($_POST["firstnameinput"]) ? $_POST["firstnameinput"] : ''; ?>"><span><?php echo $firstnameerror; ?></span>
+	<input type="text" name="firstnameinput" id="firstname" value="<?php echo isset($_POST["firstnameinput"]) ? $_POST["firstnameinput"] : ''; ?>" placeholder="Eesnimi"><span><?php echo $firstnameerror; ?></span>
 	<br>
     <label for="lastnameinput">Perekonnanimi:</label>
-	<input type="text" name="lastnameinput" id="lastname" value="<?php echo isset($_POST["lastnameinput"]) ? $_POST["lastnameinput"] : ''; ?>"><span><?php echo $lastnameerror; ?></span>
+	<input type="text" name="lastnameinput" id="lastname" value="<?php echo isset($_POST["lastnameinput"]) ? $_POST["lastnameinput"] : ''; ?>" placeholder="Perekonnanimi"><span><?php echo $lastnameerror; ?></span>
 	<br>
 	<label for="genderinput">Sugu:</label>
 	<input type="radio" name="genderinput" id="gendermale" value="1" <?php if (isset($_POST["genderinput"]) && $_POST["genderinput"] == "1") echo "checked"; ?>><label for="gendermale">Mees</label>
 	<input type="radio" name="genderinput" id="genderfemale" value="2" <?php if (isset($_POST["genderinput"]) && $_POST["genderinput"] == "2") echo "checked"; ?>><label for="genderfemale">Naine</label><span><?php echo $gendererror; ?></span>
 	<br>
 	<label for="emailinput">E-posti aadress:</label>
-	<input type="email" name="emailinput" id="email" value="<?php echo isset($_POST["emailinput"]) ? $_POST["emailinput"] : ''; ?>"><span><?php echo $emailerror; ?></span>
+	<input type="email" name="emailinput" id="email" value="<?php echo isset($_POST["emailinput"]) ? $_POST["emailinput"] : ''; ?>" placeholder="E-post"><span><?php echo $emailerror; ?></span>
 	<br>
 	<label for="passwordinput">Salasõna:</label>
 	<input type="password" name="passwordinput" id="password" placeholder="Salasõna"><span><?php echo $passworderror; ?></span>

@@ -75,6 +75,7 @@
 	<li><a href="m%c3%b5ttelist.php">Salvestatud mõtted</a></li>
 	<li><a href="addfilms.php">Filmiinfo lisamine</a></li>
 	<li><a href="listfilms.php">Filmide nimekirja vaatamine</a></li>
+	<li><a href="accountcreation.php">Konto loomine</a></li>
   </ul>
   <hr>
   <?php echo $imghtmlrand; ?>
