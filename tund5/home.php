@@ -1,5 +1,5 @@
+<!DOCTYPE html>
 <?php
-
   $username = "Oliver Labi";
   $fulltimenow = date("d.m.Y H:i:s");
   $partialtimenow = date("H:i:s");
@@ -55,14 +55,13 @@
   //$i = $i + 1; ->
   //$i ++;
   //$i += 3
-  for($i = 0;$i < $piccount; $i ++){
+  //for($i = 0;$i < $piccount; $i ++){
 	  //<img src="../img/pildifail" alt="tekst">
-	  $imghtml .= '<img src="../../vp_pics/' .$picfiles[$i] . '" alt="Tallinna Ülikool">';
-  }
+	  //$imghtml .= '<img src="../../vp_pics/' .$picfiles[$i] . '" alt="Tallinna Ülikool">';
+  //}
   $imghtmlrand .=  '<img src="../../vp_pics/'  .$picfiles[rand(0, $piccount - 1)] . '" alt="Tallinna Ülikool">';
   require("header.php");  
 ?>
-  
   <img src="../../img/vp_banner.png" alt="Veebiprogrammeerimise kursuse logo">
   <h1><?php echo $username; ?></h1>
   <p>See veebileht on loodud õppetöö käigus ning ei sisalda mingit tõsiseltvõetavat sisu!</p>
@@ -71,7 +70,14 @@
   <p><?php echo "Parajasti on " .$partofday ."."; ?> </p>
   <p><?php echo $fromsemesterdurationdays;?> <?php echo $semesterdayssofar;?> päeva on möödunud semestri algusest.<p>
   <p><?php echo $semesterpercentage;?> semestrist on läbitud.<p>
-  <p><a href="http://greeny.cs.tlu.ee/~oliver/vp/tund3/m%c3%b5tted.php">Üles kirjutatud mõtted.</a></p>
+  <ul>
+	<li><a href="m%c3%b5tted.php">Salvesta mõte</a></li>
+	<li><a href="m%c3%b5ttelist.php">Salvestatud mõtted</a></li>
+	<li><a href="addfilms.php">Filmiinfo lisamine</a></li>
+	<li><a href="listfilms.php">Filmide nimekirja vaatamine</a></li>
+	<li><a href="accountcreation.php">Konto loomine</a></li>
+  </ul>
   <hr>
   <?php echo $imghtmlrand; ?>
 </body>
+</html>

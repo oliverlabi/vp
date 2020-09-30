@@ -15,21 +15,24 @@
 	  $stmt->close();
 	  $conn->close();
   }
-
+  require("header.php");  
 ?>
-
+<!DOCTYPE html>
+<img src="../../img/vp_banner.png" alt="Veebiprogrammeerimise kursuse logo">
 <html lang="et">
 <head>
   <meta charset="utf-8">
-  <title>Mõtted!</title>
+  <title>Mõtted</title>
 </head>
 <body>
-  <hr>
   <form method="POST">
 	<label>Kirjutage oma esimene pähe tulev mõte!</label>
 	<input type="text" name="ideainput" placeholder="mõttekoht">
 	<input type="submit" name="ideasubmit" value="Saada mõte teele!">
   </form>
-  </hr>
-    <p><a href="http://greeny.cs.tlu.ee/~oliver/vp/tund3/m%c3%b5ttelist.php">Mõtete nimekiri.</a></p>
+  <ul>
+    <li><a href="http://greeny.cs.tlu.ee/~oliver/vp/tund3/m%c3%b5ttelist.php">Salvestatud mõtted.</a></li>
+	<li><a href="http://greeny.cs.tlu.ee/~oliver/vp/tund3/home.php">Avalehele.</a></li>
+	<li><a href="listfilms.php">Filmide loend.</a></li>
+  <ul>
 </body>

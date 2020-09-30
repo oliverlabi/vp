@@ -1,6 +1,7 @@
 <?php
   require("../../../config.php");
   require("fnc_common.php");
+  require("fnc_user.php");
   $monthnameset = ["jaanuar", "veebruar", "märts", "aprill", "mai", "juuni", "juuli", "august", "september", "oktoober", "november", "detsember"];
   $firstname= "";
   $lastname = "";
@@ -21,10 +22,10 @@
   $emailerror = "";
   $passworderror = "";
   $passwordsecondaryerror = "";
-    
+  
   $notice = "";
 
-    //kas vajutati salvestusnuppu
+  //Submit nupu kontroll
   if(isset($_POST["submituserdata"])){
 	  if (!empty($_POST["firstnameinput"])){
 		$firstname = test_input($_POST["firstnameinput"]);
@@ -37,7 +38,6 @@
 		  $lastnameerror = "Palun sisesta perekonnanimi!";
 	  }
 	  if(isset($_POST["genderinput"])){
-		//$gender = intval($_POST["genderinput"]);
 		$gender = intval($_POST["genderinput"]);
 	  } else {
 		  $gendererror = "Palun märgi sugu!";
@@ -59,7 +59,7 @@
 	  }
 	  if(empty($birthdayerror) and empty($birthmontherror) and empty($birthyearerror)){
 		  if(checkdate($birthmonth, $birthday, $birthyear)){
-			  $tempdate = new DateTime($birthyear ."-" .$birthmonth . "-" . $birthday);
+			  $tempdate = new DateTime($birthyear ."-" .$birthmonth . "-" .$birthday);
 			  $birthdate = $tempdate->format("Y-m-d");
 		  } else {
 			  $birthdateerror = "Valitud kuupäev on ebareaalne!";
@@ -77,22 +77,29 @@
 			  $passworderror = "Liiga lühike salasõna (sisestasite ainult " .strlen($_POST["passwordinput"]) ." märki).";
 		  }
 	  }
-	  if (empty($_POST["confirmpasswordinput"])){
+	  if (empty($_POST["passwordsecondaryinput"])){
 		$passwordsecondaryerror = "Palun sisestage salasõna kaks korda!";  
 	  } else {
-		  if($_POST["confirmpasswordinput"] != $_POST["passwordinput"]){
+		  if($_POST["passwordsecondaryinput"] != $_POST["passwordinput"]){
 			  $passwordsecondaryerror = "Sisestatud salasõnad ei olnud ühesugused!";
 		  }
 	  }
-	  if(empty($firstnameerror) and empty($lastnameerror) and empty($gendererror ) and empty($emailerror) and empty($passworderror) and empty($passwordsecondaryerror) and empty($birthdayerror) and empty($birthmonth) and empty($birthyear) and empty($birthdate)){
-
-		$notice = "Kõik korras!";
-		$firstname= "";
-	    $lastname = "";
-		$gender = "";
-		$email = "";
+	  if(empty($firstnameerror) and empty($lastnameerror) and empty($gendererror ) and empty($birthdayerror) and empty($birthmontherror) and empty($birthyearerror) and empty($birthdateerror) and empty($emailerror) and empty($passworderror) and empty($passwordsecondaryerror)){
+		$result = signup($firstname, $lastname, $email, $gender, $birthdate, $_POST["passwordinput"]);
+		if($result == "ok"){
+			$notice = "Kasutaja on edukalt loodud!";
+			$firstname= "";
+			$lastname = "";
+			$gender = "";
+			$birthday = null;
+			$birthmonth = null;
+			$birthyear = null;
+			$birthdate = null;
+			$email = "";
+		} else {
+			$notice = "Kahjuks tekkis tehniline viga: " .$result;
+		}
 	  }
-	  
   }
   
 ?>
@@ -158,7 +165,6 @@
 		}
 		echo "</select> \n";
 	  ?>
-	  <br>
 	  <span><?php echo $birthdateerror ." " .$birthdayerror ." " .$birthmontherror ." " .$birthyearerror; ?></span>
 	  <br>
 	  <label for="emailinput">E-mail (kasutajatunnus):</label>
@@ -170,7 +176,7 @@
 	  <label for="passwordsecondaryinput">Korrake salasõna:</label>
 	  <input name="passwordsecondaryinput" id="passwordsecondaryinput" type="password"><span><?php echo $passwordsecondaryerror; ?></span>
 	  <br>
-	  <input name="submituserdata" type="submit" value="Loo kasutaja"><span><?php echo "&nbsp; &nbsp; &nbsp;" .$notice; ?></span>
+	  <input name="submituserdata" type="submit" value="Loo kasutaja"><span><?php echo "&nbsp;" .$notice; ?></span>
   </form>
 </body>
 </html>
