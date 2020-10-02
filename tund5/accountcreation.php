@@ -112,9 +112,6 @@
 </head>
 <body>
   <p>Kasutaja loomine<p>
-  <ul>
-   <li><a href="home.php">Avaleht</a></li>
-  </ul>
   <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
      <label for="firstnameinput">Eesnimi:</label>
 	  <input name="firstnameinput" id="firstnameinput" type="text" value="<?php echo $firstname; ?>"><span><?php echo $firstnameerror; ?></span>
@@ -178,5 +175,9 @@
 	  <br>
 	  <input name="submituserdata" type="submit" value="Loo kasutaja"><span><?php echo "&nbsp;" .$notice; ?></span>
   </form>
+  <hr>
+  <ul>
+   <li><a href="page.php">Avaleht</a></li>
+  </ul>
 </body>
 </html>

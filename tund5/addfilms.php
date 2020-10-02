@@ -32,14 +32,15 @@
 <html lang="et">
 <head>
   <meta charset="utf-8">
-  <title>Filmide loend</title>
+  <title>Filmide lisamine</title>
 </head>
 <body>
-  <p>Filmide loend<p>
+  <p>Filmide lisamine<p>
   <ul>
    <li><a href="home.php">Avaleht</a></li>
    <li><a href="listfilms.php">Filmide nimekirja vaatamine</a></li>
   </ul>
+  <hr>
   <form method="POST">
     <label for="titleinput">Filmi pealkiri:</label>
 	<input type="text" name="titleinput" id="titleinput" placeholder="Filmi pealkiri">

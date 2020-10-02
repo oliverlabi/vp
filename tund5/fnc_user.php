@@ -49,6 +49,16 @@
 		} else {
 			$result = $stmt->error;
 		}
+		if (!empty($_POST["emailinput"])) {
+
+		$email = trim(htmlspecialchars($_POST["emailinput"]));
+		$email = filter_var($email, FILTER_VALIDATE_EMAIL);
+
+		if ($email === false) {
+			exit("Vale E-posti aadress!");
+		}
+
+	}
 		$stmt->close();
 		$conn->close();
 		return $result;

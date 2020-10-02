@@ -23,10 +23,11 @@
   <title>Mõtted!</title>
 </head>
 <body>
-  <p>Kirjutatud mõtted<p>
-  <li><a href="http://greeny.cs.tlu.ee/~oliver/vp/tund3/m%c3%b5tted.php">Salvesta mõte</a></li>
-  <li><a href="http://greeny.cs.tlu.ee/~oliver/vp/tund3/home.php">Avaleht</a></li>
+  <p>Kirjutatud mõtted!<p>
+  <ul>
+	<li><a href="http://greeny.cs.tlu.ee/~oliver/vp/tund5/home.php">Avaleht</a></li>
+	<li><a href="http://greeny.cs.tlu.ee/~oliver/vp/tund5/m%c3%b5tted.php">Salvesta mõte</a></li>
+  </ul>
   <hr>
-   <?php echo $ideahtml; ?>
-  </hr>
+  <?php echo $ideahtml; ?>
 </body>

@@ -15,8 +15,9 @@
 <body>
   <p>Filmide loend<p>
   <ul>
-   <li><a href="home.php">Avalehele</a></li>
+   <li><a href="home.php">Avaleht</a></li>
    <li><a href="addfilms.php">Filmiinfo lisamine</a></li>
+  <hr>
      <?php echo readfilms(0); ?>
   </hr>
 </body>

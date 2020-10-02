@@ -1,5 +1,5 @@
 <?php
-
+  require("../../../config.php");
   //var_dump($_POST);
   require("../../../config.php");
   if(isset($_POST["ideasubmit"]) and !empty($_POST["ideainput"])){
@@ -25,14 +25,16 @@
   <title>Mõtted</title>
 </head>
 <body>
+  <ul>
+  	<li><a href="http://greeny.cs.tlu.ee/~oliver/vp/tund5/home.php">Avaleht</a></li>
+    <li><a href="http://greeny.cs.tlu.ee/~oliver/vp/tund5/m%c3%b5ttelist.php">Salvestatud mõtted</a></li>
+  </ul>
+  <hr>
   <form method="POST">
 	<label>Kirjutage oma esimene pähe tulev mõte!</label>
 	<input type="text" name="ideainput" placeholder="mõttekoht">
 	<input type="submit" name="ideasubmit" value="Saada mõte teele!">
   </form>
-  <ul>
-    <li><a href="http://greeny.cs.tlu.ee/~oliver/vp/tund3/m%c3%b5ttelist.php">Salvestatud mõtted.</a></li>
-	<li><a href="http://greeny.cs.tlu.ee/~oliver/vp/tund3/home.php">Avalehele.</a></li>
-	<li><a href="listfilms.php">Filmide loend.</a></li>
-  <ul>
+  </hr>
+
 </body>
