@@ -42,13 +42,23 @@
 	$moviegenreid = "";
 	$notice = null;
 	$conn = new mysqli($GLOBALS["serverhost"], $GLOBALS["serverusername"], $GLOBALS["serverpassword"], $GLOBALS["database"]);
-	$stmt = $conn->prepare("INSERT INTO movie_genre (movie_id, genre_id) VALUES(?,?)");
+	$stmt = $conn->prepare("SELECT movie_genre_id FROM movie_genre WHERE movie_id = ? AND genre_id = ?");
 	echo $conn->error;
 	$stmt->bind_param("ii", $filminput, $genreinput);
-	if($stmt->execute()){
-		$notice = "Zanr on filmile edukalt lisatud!";
+	$stmt->bind_result($idfromdb);
+	$stmt->execute();
+	if($stmt->fetch()){
+		$notice = "Selline seos on juba olemas!";
 	} else {
-		$notice = $stmt->error;
+		$stmt->close();
+		$stmt = $conn->prepare("INSERT INTO movie_genre (movie_id, genre_id) VALUES(?,?)");
+		echo $conn->error;
+		$stmt->bind_param("ii", $filminput, $genreinput);
+		if($stmt->execute()){
+			$notice = "Zanr on filmile edukalt lisatud!";
+		} else {
+			$notice = $stmt->error;
+		}
 	}
 	$stmt->close();
 	$conn->close();
